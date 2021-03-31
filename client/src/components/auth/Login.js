@@ -1,4 +1,5 @@
 import  React, { useState } from 'react';
+import {Link} from 'react-router-dom';
 
 const Login = () => {
 
@@ -57,6 +58,9 @@ const Login = () => {
                         />
                     </div>
                 </form>
+                <Link to={'/new-account'} className="account-link">
+                    Don't have an account? Register
+                </Link>
             </div>
         </div>
     );
