@@ -1,16 +1,34 @@
-import  React from 'react';
+import  React, { useState } from 'react';
 
 const Login = () => {
 
-    const onChange = () => {
+    //sign in state
+    const [ user, saveUser ] = useState({
+        email: '',
+        passowrd: ''
+    });
 
+    //get from user
+    const { email, password } = user;
+
+    const onChange = (e) => {
+        saveUser({
+            ...user,
+            [e.target.name] : e.target.value
+        })
+    }
+
+    //when the user wants to sign in
+    const onSubmit = e => {
+        e.preventDeault();
     }
     
     return (
         <div className="form-usuario">
             <div className="container-form shadow-dark">
                 <h1>Sign In</h1>
-                <form action="">
+                <form 
+                onSubmit={onSubmit}>
                     <div className="field-form">
                         <label htmlFor="email">Email</label>
                         <input 
@@ -18,6 +36,7 @@ const Login = () => {
                         id="email"
                         name="email"
                         placeholder="Your email"
+                        value={email}
                         onChange={onChange}
                         />
                     </div>
@@ -28,6 +47,7 @@ const Login = () => {
                         id="password"
                         name="password"
                         placeholder="Your password"
+                        value={password}
                         onChange={onChange}
                         />
                     </div>
